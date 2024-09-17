@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário com bootstrap</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Cadastro de Usuário</h1>
+    <div id="avatar"></div>
+    <input type="text" id="nameInput" class="form-control" placeholder="Digite o nome do usuário">
+    <textarea id="descriptionInput" class="form-control" rows="3" placeholder="Digite uma apresentação"></textarea>
+    <br>
+    <button class="btn btn-custom" onclick="generateIdenticon()">Gerar Avatar</button>
+  </div>
+
+  <script>
+    function generateIdenticon() {
+      const name = document.getElementById('nameInput').value;
+      const avatar = document.getElementById('avatar');
+      
+      // Usa o jdenticon para gerar um SVG baseado no nome
+      if (name) {
+        const size = 150;
+        const svg = jdenticon.toSvg(name, size);
+        avatar.innerHTML = svg;
+      } else {
+        avatar.innerHTML = '';
+      }
+    }
+  </script>
+
+</body>
+</html>

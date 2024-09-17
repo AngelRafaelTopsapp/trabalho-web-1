@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Descontraído</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mb-4">Bem-vindo!</h1>
+    <div class="avatar" id="avatar"></div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="username">Nome de Usuário</label>
+        <input type="text" class="form-control mb-3" id="username" placeholder="Digite seu nome de usuário">
+      </div>
+      <div class="form-group password-container">
+        <label for="password">Senha</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+          <div class="input-group-append">
+            <button class="btn btn-show-password" type="button" onclick="togglePassword()">
+              <i class="fas fa-eye" id="password-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group password-container">
+        <label for="confirmPassword">Confirmar Senha</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme sua senha">
+          <div class="input-group-append">
+            <button class="btn btn-show-password" type="button" onclick="toggleConfirmPassword()">
+              <i class="fas fa-eye" id="confirm-password-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dob">Data de Nascimento</label>
+        <input type="date" class="form-control mb-3" id="dob">
+      </div>
+      <div class="form-group">
+        <label for="bio">Sobre Você</label>
+        <textarea class="form-control" id="bio" rows="3" placeholder="Conte-nos um pouco sobre você!"></textarea>
+      </div>
+      <button type="submit" class="btn btn-custom mt-3">Cadastrar</button>
+    </form>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Cadastro Completo!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="identicon-container" id="modalAvatar"></div>
+          <h4 id="modalUsername"></h4>
+          <p>Bem-vindo(a) ao nosso sistema!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function generateIdenticon() {
+      const name = document.getElementById('username').value;
+      const avatar = document.getElementById('avatar');
+      const modalAvatar = document.getElementById('modalAvatar');
+      const modalUsername = document.getElementById('modalUsername');
+
+      if (name) {
+        const size = 150;
+        const svg = jdenticon.toSvg(name, size);
+        avatar.innerHTML = svg;
+        modalAvatar.innerHTML = svg;
+        modalUsername.textContent = name;
+      } else {
+        avatar.innerHTML = '';
+        modalAvatar.innerHTML = '';
+        modalUsername.textContent = '';
+      }
+    }
+
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const passwordIcon = document.getElementById('password-icon');
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordIcon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        passwordField.type = 'password';
+        passwordIcon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    function toggleConfirmPassword() {
+      const confirmPasswordField = document.getElementById('confirmPassword');
+      const confirmPasswordIcon = document.getElementById('confirm-password-icon');
+      if (confirmPasswordField.type === 'password') {
+        confirmPasswordField.type = 'text';
+        confirmPasswordIcon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        confirmPasswordField.type = 'password';
+        confirmPasswordIcon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      generateIdenticon(); 
+      $('#successModal').modal('show'); 
+    }
+  </script>
+
+</body>
+</html>
