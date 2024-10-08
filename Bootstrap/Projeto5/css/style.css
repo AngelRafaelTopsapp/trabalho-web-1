@@ -1,0 +1,18 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  max-height: 400px; /* Define a altura máxima do card-body */
+  overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+}
+
+.task-image {
+  max-width: 40%; /* Redimensiona a imagem para não ultrapassar o card */
+  height: auto; /* Mantém a proporção da imagem */
+  max-height: 150px; /* Define a altura máxima da imagem */
+}
