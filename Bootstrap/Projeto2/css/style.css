@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+section {
+  padding: 40px 0;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}

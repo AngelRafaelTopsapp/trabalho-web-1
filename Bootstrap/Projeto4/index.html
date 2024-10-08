@@ -12,91 +12,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1"></script>
-    <style>
-      body {
-        font-family: "Comic Sans MS", cursive, sans-serif;
-        background-color: #f0f8ff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
-      .container {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        position: relative;
-      }
-      .avatar {
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
-        margin-bottom: 20px;
-        background-color: #e0e0e0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        color: #666;
-      }
-      .btn-custom {
-        background-color: #ff6347;
-        color: white;
-        border: none;
-      }
-      .btn-custom:hover {
-        background-color: #ff4500;
-      }
-      .password-container {
-        position: relative;
-      }
-      .password-container .input-group {
-        position: relative;
-      }
-      .password-container .input-group input {
-        padding-right: 3rem;
-      }
-      .password-container .input-group .input-group-append {
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
-        z-index: 2;
-      }
-      .password-container .input-group .btn-show-password {
-        background-color: transparent;
-        border: none;
-        color: #666;
-      }
-      .password-container .input-group .btn-show-password:hover {
-        color: #000;
-      }
-      .identicon-container {
-        animation: rgbBorder 2s infinite;
-      }
-      @keyframes rgbBorder {
-        0% {
-          border-color: red;
-        }
-        33% {
-          border-color: green;
-        }
-        66% {
-          border-color: blue;
-        }
-        100% {
-          border-color: red;
-        }
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -212,57 +129,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      function generateIdenticon() {
-        const name = document.getElementById("username").value;
-        const avatar = document.getElementById("avatar");
-        const modalAvatar = document.getElementById("modalAvatar");
-        const modalUsername = document.getElementById("modalUsername");
-
-        if (name) {
-          const size = 150;
-          const svg = jdenticon.toSvg(name, size);
-          avatar.innerHTML = svg;
-          modalAvatar.innerHTML = svg;
-          modalUsername.textContent = name;
-        } else {
-          avatar.innerHTML = "";
-          modalAvatar.innerHTML = "";
-          modalUsername.textContent = "";
-        }
-      }
-
-      function togglePassword() {
-        const passwordField = document.getElementById("password");
-        const passwordIcon = document.getElementById("password-icon");
-        if (passwordField.type === "password") {
-          passwordField.type = "text";
-          passwordIcon.classList.replace("fa-eye", "fa-eye-slash");
-        } else {
-          passwordField.type = "password";
-          passwordIcon.classList.replace("fa-eye-slash", "fa-eye");
-        }
-      }
-
-      function toggleConfirmPassword() {
-        const confirmPasswordField = document.getElementById("confirmPassword");
-        const confirmPasswordIcon = document.getElementById(
-          "confirm-password-icon"
-        );
-        if (confirmPasswordField.type === "password") {
-          confirmPasswordField.type = "text";
-          confirmPasswordIcon.classList.replace("fa-eye", "fa-eye-slash");
-        } else {
-          confirmPasswordField.type = "password";
-          confirmPasswordIcon.classList.replace("fa-eye-slash", "fa-eye");
-        }
-      }
-
-      function handleSubmit(event) {
-        event.preventDefault();
-        generateIdenticon();
-        $("#successModal").modal("show");
-      }
-    </script>
+    <script src="scripts.js"></script>
   </body>
 </html>
